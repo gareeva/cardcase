@@ -30,6 +30,8 @@ public class Card {
     @DatabaseField
     private String phone;
     @DatabaseField
+    private String facebook;
+    @DatabaseField
     private String avatarPath;
 
 
@@ -74,6 +76,7 @@ public class Card {
         card.website = website;
         card.email = email;
         card.phone = phone;
+        card.facebook = facebook;
         card.avatarPath = avatarPath;
         card.fields = new ArrayList<>(getFields());
         card.createdAt = createdAt;
@@ -144,6 +147,14 @@ public class Card {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String phone) {
+        this.facebook = facebook;
     }
 
     public File getAvatar() {
