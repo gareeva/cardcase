@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+  <View
+      android:id="@+id/home_transition_overlay"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="@color/secondary"
+      android:visibility="gone"/>
 
   <android.support.design.widget.CoordinatorLayout
       style="@style/layout"
@@ -53,6 +61,24 @@
 
     </LinearLayout>
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/home_exchange"
+        style="@style/fab"
+        android:scaleType="center"
+        android:src="@drawable/ic_exchange"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/change_theme"
+        style="@style/change_theme_button_style"
+        android:scaleType="center"
+        android:src="@android:drawable/ic_menu_preferences"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </RelativeLayout>
+
     <android.support.v7.widget.RecyclerView
         style="@style/layout_inner"
         android:id="@+id/home_cards"
@@ -62,19 +88,7 @@
         android:clipToPadding="false"
         tools:visibility="visible"/>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/home_exchange"
-        style="@style/fab"
-        android:scaleType="center"
-        android:src="@drawable/ic_exchange"/>
-
   </android.support.design.widget.CoordinatorLayout>
 
-  <View
-      android:id="@+id/home_transition_overlay"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:background="@color/secondary"
-      android:visibility="gone"/>
 
 </FrameLayout>

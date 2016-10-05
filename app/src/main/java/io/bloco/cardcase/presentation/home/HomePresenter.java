@@ -91,6 +91,10 @@ import javax.inject.Inject;
     view.openExchange();
   }
 
+  @Override public void clickedChangeTheme() {
+    view.openSettings();
+  }
+
   @Override public void onGetUserCard(Card userCard) {
     if (userCard == null) {
       view.openOnboarding();

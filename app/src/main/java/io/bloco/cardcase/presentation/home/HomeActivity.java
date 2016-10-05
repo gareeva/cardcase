@@ -3,6 +3,7 @@ package io.bloco.cardcase.presentation.home;
 import android.animation.Animator;
 import android.content.Context;
 import android.content.Intent;
+//import android.viewBackgroundColor
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +13,7 @@ import android.transition.TransitionInflater;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -55,6 +57,9 @@ public class HomeActivity extends BaseActivity
 
     @Bind(R.id.home_exchange)
     FloatingActionButton exchangeButton;
+
+    @Bind(R.id.change_theme)
+    FloatingActionButton changeThemeButton;
 
     @Bind(R.id.home_transition_overlay)
     View transitionOverlay;
@@ -100,7 +105,13 @@ public class HomeActivity extends BaseActivity
         super.onStart();
         transitionOverlay.setVisibility(View.GONE);
         presenter.start(this);
+
+        Theme currentTheme = new Theme();
+        View view = this.getWindow().getDecorView();
+//        view.setBackgroundColor(currentTheme.getViewBackgroundColor());
+        view = currentTheme.viewEditor(view);
     }
+
 
     @Override
     public void onBackPressed() {
@@ -114,6 +125,11 @@ public class HomeActivity extends BaseActivity
     @OnClick(R.id.home_exchange)
     public void onClickedExchange() {
         presenter.clickedExchange();
+    }
+
+    @OnClick(R.id.change_theme)
+    public void onClickedChangeTheme() {
+        presenter.clickedChangeTheme();
     }
 
     @Override
@@ -171,6 +187,13 @@ public class HomeActivity extends BaseActivity
         Intent intent = ExchangeActivity.Factory.getIntent(this);
         startActivityWithAnimation(intent);
     }
+    @Override
+    public void openSettings() {
+//        animateExchangeOverlay();
+        Intent intent = SettingsActivity.Factory.getIntent(this);
+        startActivityWithAnimation(intent);
+    }
+
 
     @Override
     public void openSearch() {
