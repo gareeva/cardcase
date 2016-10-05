@@ -75,6 +75,11 @@
             android:hint="Address"
             android:inputType="textPostalAddress" />
 
+        <Spinner
+            android:id="@+id/icons_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <EditText
             android:id="@+id/card_website"
             style="@style/card_field"

@@ -1,27 +1,35 @@
 package io.bloco.cardcase.presentation.common;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.format.DateUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnItemClick;
+import butterknife.OnItemSelected;
 import io.bloco.cardcase.AndroidApplication;
 import io.bloco.cardcase.R;
 import io.bloco.cardcase.data.models.Card;
 import io.bloco.cardcase.presentation.home.SimpleTextWatcher;
+import io.bloco.cardcase.presentation.user.UserActivity;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import javax.inject.Inject;
 
@@ -52,7 +60,8 @@ public class CardInfoView extends FrameLayout {
     EditText position;
     @Bind(R.id.card_email)
     EditText email;
-
+    @Bind(R.id.icons_list)
+    Spinner icons;
 
 
     private Card card;
@@ -64,8 +73,17 @@ public class CardInfoView extends FrameLayout {
         super(context, attrs);
         ((AndroidApplication) context.getApplicationContext()).getApplicationComponent().inject(this);
 
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context, R.array.icons_array, android.R.layout.simple_spinner_dropdown_item);
+
         inflate(context, R.layout.view_card_info, this);
+
         ButterKnife.bind(this);
+
+        if (context instanceof UserActivity) {
+            icons.setAdapter(adapter);
+        } else {
+            ButterKnife.unbind(icons);
+        }
 
         fieldTextWatcher = new FieldTextWatcher();
         name.addTextChangedListener(fieldTextWatcher);
@@ -92,6 +110,16 @@ public class CardInfoView extends FrameLayout {
 
         Intent chooser = Intent.createChooser(intent, getResources().getString(R.string.send_email));
         getContext().startActivity(chooser);
+    }
+
+    @OnItemSelected(R.id.icons_list)
+    public void test() {
+        Log.d("test", "clicked");
+        TextView textView = new TextView(this.getContext());
+        textView.setText("LYl, TEST!");
+        textView.setId(new Integer(10));
+        textView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+//        ((Activity) this.getContext()).getWindow().getDecorView().getRootView().getRootView()
     }
 
     @OnClick(R.id.card_phone)

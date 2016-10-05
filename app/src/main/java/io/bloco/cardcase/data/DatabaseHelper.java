@@ -16,7 +16,7 @@ import javax.inject.Singleton;
 
   private static final String DATABASE_NAME = "CardsDataBase";
   private static final String TEST_DATABASE_NAME = "database_test";
-  private static final int DATABASE_VERSION = 2;
+  private static final int DATABASE_VERSION = 4;
 
   private Class[] mTables = new Class[] { Card.class };
 
