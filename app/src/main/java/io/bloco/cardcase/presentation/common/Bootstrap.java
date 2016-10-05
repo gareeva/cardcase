@@ -64,6 +64,7 @@ public class Bootstrap {
 //        card.setFacebookLink(faker.internet.url());
         card.setFacebook("https://www.facebook.com/LianchikGareeva");
 
+        card.setVklink("http://vk.com/xolodilnichka");
         card.setCompany(faker.company.name());
         card.setAddress(faker.address.city().toString());
         card.setWebsite(faker.internet.email());
