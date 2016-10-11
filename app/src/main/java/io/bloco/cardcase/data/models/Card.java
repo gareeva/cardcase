@@ -30,6 +30,8 @@ public class Card {
     @DatabaseField
     private String phone;
     @DatabaseField
+    private String facebook;
+    @DatabaseField
     private String avatarPath;
     @DatabaseField
     private String linkedinURL;
@@ -81,6 +83,7 @@ public class Card {
         card.website = website;
         card.email = email;
         card.phone = phone;
+        card.facebook = facebook;
         card.vklink = vklink;
         card.facebookLink = facebookLink;
         card.avatarPath = avatarPath;
@@ -172,6 +175,14 @@ public class Card {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String phone) {
+        this.facebook = facebook;
     }
 
     public File getAvatar() {

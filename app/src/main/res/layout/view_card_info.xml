@@ -186,7 +186,6 @@
         <EditText
             android:id="@id/card_phone"
             style="@style/card_field"
-            android:layout_width="match_parent"
             android:layout_height="@dimen/card_field_height"
             android:layout_marginTop="@dimen/margin_tiny"
             android:hint="@string/phone"
@@ -194,11 +193,16 @@
             android:nextFocusDown="@+id/card_fields" />
 
 
-        <LinearLayout
-            android:id="@id/card_fields"
+        <EditText
+            android:id="@+id/facebook_link"
+            style="@style/card_field"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:hint="facebook_link"
+            android:inputType="textPersonName"
+            android:nextFocusDown="@+id/card_fields"
+             />
 
         <TextView
             android:id="@+id/card_time"

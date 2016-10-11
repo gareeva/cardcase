@@ -8,6 +8,7 @@
     <string name="name">Name</string>
     <string name="email">Email</string>
     <string name="phone">Phone number</string>
+    <!--<string name="facebook">Facebook account</string>-->
     <string name="field_hint"></string>
     <string name="linkedin">LinkedIn</string>
     <string name="vk">Vk</string>

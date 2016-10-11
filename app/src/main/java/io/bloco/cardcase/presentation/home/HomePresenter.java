@@ -120,6 +120,10 @@ public class HomePresenter
         this.receivedCards = receivedCards;
         //showReceivedCards();
     }
+  @Override public void clickedChangeTheme() {
+    view.openSettings();
+  }
+
 
     public void showReceivedCards() {
         if (this.receivedCards.isEmpty()) {

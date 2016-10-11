@@ -41,6 +41,8 @@ public class CardInfoView extends FrameLayout {
     EditText name;
     @Bind(R.id.card_phone)
     EditText phone;
+    @Bind(R.id.facebook_link)
+    EditText facebook;
     @Bind(R.id.card_fields)
     ViewGroup fields;
     @Bind(R.id.card_time)
@@ -85,6 +87,7 @@ public class CardInfoView extends FrameLayout {
         position.addTextChangedListener(fieldTextWatcher);
         email.addTextChangedListener(fieldTextWatcher);
         phone.addTextChangedListener(fieldTextWatcher);
+        facebook.addTextChangedListener(fieldTextWatcher);
         vklink.addTextChangedListener(fieldTextWatcher);
         facebooklink.addTextChangedListener(fieldTextWatcher);
         linkedinProfile.addTextChangedListener(fieldTextWatcher);
@@ -162,6 +165,17 @@ public class CardInfoView extends FrameLayout {
         getContext().startActivity(intent);
     }
 
+    @OnClick(R.id.facebook_link)
+    public void clickFacebookLink() {
+        if (editMode) {
+            return;
+        }
+
+        Uri webpage = Uri.parse(card.getFacebook());
+        Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+        getContext().startActivity(intent);
+    }
+
     @OnClick(R.id.card_avatar)
     public void pickAvatar() {
         if (editMode && editListener != null) {
@@ -204,12 +218,13 @@ public class CardInfoView extends FrameLayout {
         card.setPosition(position.getText().toString().trim());
         card.setEmail(email.getText().toString().trim());
         card.setPhone(phone.getText().toString().trim());
+        card.setFacebook(facebook.getText().toString().trim());
         card.setVklink(vklink.getText().toString().trim());
         card.setFacebookLink(facebooklink.getText().toString().trim());
 
         List<String> urlParts = Arrays.asList(linkedinProfile.toString().trim().split("/"));
         card.setLinkedinURL(urlParts.get(urlParts.size() - 1));
-
+        
         int fieldsCount = fields.getChildCount();
         ArrayList<String> fieldValues = new ArrayList<>(fieldsCount);
         for (int i = 0; i < fieldsCount; i++) {
@@ -234,6 +249,7 @@ public class CardInfoView extends FrameLayout {
         position.setText(card.getPosition());
         email.setText(card.getEmail());
         phone.setText(card.getPhone());
+        facebook.setText(card.getFacebook());
         vklink.setText(card.getVklink());
         facebooklink.setText(card.getFacebookLink());
         linkedinProfile.setText(card.getLinkedinURL());
@@ -300,6 +316,7 @@ public class CardInfoView extends FrameLayout {
         disabledEditText(position);
         disabledEditText(email);
         disabledEditText(phone);
+        disabledEditText(facebook);
         disabledEditText(vklink);
         disabledEditText(facebooklink);
         disabledEditText(linkedinProfile);

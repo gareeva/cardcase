@@ -23,7 +23,11 @@ public class HomeContract {
 
         void openExchange();
 
+
         void openSearch();
+
+        void openSettings();
+
 
         void closeSearch();
     }
@@ -39,6 +43,10 @@ public class HomeContract {
 
         void clickedUser();
 
-        void clickedExchange();
-    }
+
+    void clickedExchange();
+
+    void clickedChangeTheme();
+  }
+
 }
