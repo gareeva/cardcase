@@ -54,14 +54,6 @@ public class UserActivity extends BaseActivity
     ViewGroup rootLayout;
     @Bind(R.id.user_card)
     CardInfoView cardView;
-    @Bind(R.id.user_edit)
-    FloatingActionButton edit;
-    @Bind(R.id.user_done)
-    FloatingActionButton done;
-    @Bind(R.id.user_layout)
-    ViewGroup rootLayout;
-    @Bind(R.id.user_card)
-    CardInfoView cardView;
     @Bind(R.id.user_done)
     FloatingActionButton done;
     @Bind(R.id.fab_main)
@@ -247,10 +239,6 @@ public class UserActivity extends BaseActivity
         presenter.clickedEdit();
         fabInvisible();
     }
-    @OnClick(R.id.user_edit)
-    public void onEditClicked() {
-        presenter.clickedEdit();
-    }
 
     private void fabInvisible() {
         fabCreate.setVisibility(View.GONE);
@@ -278,38 +266,41 @@ public class UserActivity extends BaseActivity
         System.out.println(fabMain.isEnabled());
         System.out.println(fabMain.isFocusable());
     }
-    @OnClick(R.id.user_done)
-    public void onDoneClicked() {
-        presenter.clickedDone(cardView.getCard());
+
+    @Override
+    public void showUser(Card userCard) {
+        cardView.setCard(userCard);
     }
 
-  @Override public void showUser(Card userCard) {
-    cardView.setCard(userCard);
-  }
+    @Override
+    public void showBack() {
+        toolbar.setEndButton(R.drawable.ic_back_right, R.string.back, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.clickedBack();
+            }
+        });
+    }
 
-  @Override public void showBack() {
-    toolbar.setEndButton(R.drawable.ic_back_right, R.string.back, new View.OnClickListener() {
-      @Override public void onClick(View v) {
-        presenter.clickedBack();
-      }
-    });
-  }
+    @Override
+    public void hideBack() {
+        toolbar.removeEndButton();
+    }
 
-  @Override public void hideBack() {
-    toolbar.removeEndButton();
-  }
+    @Override
+    public void showCancel() {
+        toolbar.setStartButton(R.drawable.ic_close, R.string.back, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.clickedCancel();
+            }
+        });
+    }
 
-  @Override public void showCancel() {
-    toolbar.setStartButton(R.drawable.ic_close, R.string.back, new View.OnClickListener() {
-      @Override public void onClick(View v) {
-        presenter.clickedCancel();
-      }
-    });
-  }
-
-  @Override public void hideCancel() {
-    toolbar.removeStartButton();
-  }
+    @Override
+    public void hideCancel() {
+        toolbar.removeStartButton();
+    }
 
     @Override
     public void showEditButton() {
@@ -319,34 +310,41 @@ public class UserActivity extends BaseActivity
     public void hideEditButton() {
     }
 
-  @Override public void showDoneButton() {
-    done.setVisibility(View.VISIBLE);
-  }
+    @Override
+    public void showDoneButton() {
+        done.setVisibility(View.VISIBLE);
+    }
 
-  @Override public void hideDoneButton() {
-    done.setVisibility(View.GONE);
-  }
+    @Override
+    public void hideDoneButton() {
+        done.setVisibility(View.GONE);
+    }
 
-  @Override public void enableEditMode() {
-    cardView.enableEditMode();
-  }
+    @Override
+    public void enableEditMode() {
+        cardView.enableEditMode();
+    }
 
-  @Override public void disabledEditMode() {
-    cardView.disabledEditMode();
-  }
+    @Override
+    public void disabledEditMode() {
+        cardView.disabledEditMode();
+    }
 
-  @Override public void openHome() {
-    Intent intent = HomeActivity.Factory.getIntent(this);
-    startActivityWithAnimation(intent);
-  }
+    @Override
+    public void openHome() {
+        Intent intent = HomeActivity.Factory.getIntent(this);
+        startActivityWithAnimation(intent);
+    }
 
-  @Override public void close() {
-    finishWithAnimation();
-  }
+    @Override
+    public void close() {
+        finishWithAnimation();
+    }
 
-  @Override public void onPickAvatar() {
-    avatarPicker.startPicker(this);
-  }
+    @Override
+    public void onPickAvatar() {
+        avatarPicker.startPicker(this);
+    }
 
     @Override
     public void onChange(Card updatedCard) {

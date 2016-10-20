@@ -174,8 +174,6 @@ public class HomeActivity extends BaseActivity
         CoordinatorLayout ll = (CoordinatorLayout)findViewById(R.id.coord);
         Theme.setTypeTheme();
 
-        View view = this.getWindow().getDecorView();
-        FrameLayout ll = (FrameLayout) findViewById(R.id.frame);
 
         Theme.viewFrameLayTheme(view, ll);
 
