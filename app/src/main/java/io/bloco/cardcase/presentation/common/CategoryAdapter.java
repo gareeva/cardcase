@@ -11,6 +11,7 @@ import io.bloco.cardcase.R;
 import io.bloco.cardcase.common.di.PerActivity;
 import io.bloco.cardcase.data.Database;
 import io.bloco.cardcase.data.models.Category;
+import io.bloco.cardcase.presentation.home.HomeActivity;
 import io.bloco.cardcase.presentation.home.HomeContract;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private final HomeContract.View homeContract;
     private final Database database;
+    private Activity activity;
     private List<Category> categories;
     private boolean showLoader;
 
@@ -37,6 +39,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         this.showLoader = false;
         this.homeContract = (HomeContract.View) activity;
         this.database = database;
+        this.activity = activity;
     }
 
     public void showLoader() {
@@ -69,7 +72,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             case ViewType.NORMAL:
             default:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_category, parent, false);
-                return new CategoryViewHolder(view, homeContract, database);
+                return new CategoryViewHolder(view, homeContract, database, (HomeActivity) activity);
         }
     }
 

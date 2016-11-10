@@ -84,6 +84,7 @@ dependencies {
   compile('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') {
     transitive = true;
   }
+  compile 'com.bignerdranch.android:recyclerview-multiselect:0.2'
   // Generate fake data
   compile 'com.github.blocoio:faker:1.2.3'
   // Testing

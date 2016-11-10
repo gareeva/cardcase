@@ -11,10 +11,19 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.bignerdranch.android.multiselector.ModalMultiSelectorCallback;
+import com.bignerdranch.android.multiselector.MultiSelector;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -307,6 +316,12 @@ public class HomeActivity extends BaseActivity
     public void onSearchQuery(String query) {
         Timber.i("onSearchQuery");
         presenter.searchEntered(query);
+    }
+
+    // Create context menu for long press actions
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        getMenuInflater().inflate(R.menu.selection_menu, menu);
     }
 
     private void animateExchangeOverlay() {
